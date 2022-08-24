@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form, Row, Col, FormGroup, Label, Button, Input } from "reactstrap";
+import { ToastContainer, toast } from "react-toastify";
 const Payment = (props) => {
 
+  const sucessnotify = () => toast("Created successfully !!");
   
 
   const [payment,setPayment] =useState({})
@@ -19,6 +21,7 @@ const Payment = (props) => {
     axios.post(`http://localhost:8080/payment/member/${id}`,payment).then(
       (response)=>{
         console.log(response.data);
+        sucessnotify();
       },
       (error)=>{
         console.log(error);
@@ -79,7 +82,9 @@ const Payment = (props) => {
       </FormGroup>
       <FormGroup>
         <Label for="type">Mode of payment</Label>
-        <Input id="type" name="type" type="select"  
+        <Input id="type" name="type" type="select"   onChange={(e)=>{
+          setPayment({...payment,type:e.target.value})
+        }} 
          >
           <option value="">---Type of payment----</option>
           <option value="Google Pay">Google Pay</option>
@@ -92,6 +97,7 @@ const Payment = (props) => {
         Register
       </Button>
     </Form>
+    <ToastContainer/>
     </div>
   );
 };

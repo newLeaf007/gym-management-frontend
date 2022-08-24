@@ -1,15 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { Table } from "reactstrap";
-import Payment from "./Payment";
-
-const SubHome = () => {
+const GetAllPayment = () => {
   const [data, setData] = useState([]);
 
   //functions to get all the member
   const getAllMember = () => {
-    axios.get(`http://localhost:8080/member`).then(
+    axios.get(`http://localhost:8080/payment`).then(
       (response) => {
         console.log(response.data);
         setData(response.data);
@@ -25,7 +22,6 @@ const SubHome = () => {
     getAllMember();
   }, []);
 
-
   const columns = [
     {
       name: "Id",
@@ -33,41 +29,32 @@ const SubHome = () => {
       sortable: true,
     },
     {
-      name: "Name",
-      selector: (row) => row.name,
+      name: "Month",
+      selector: (row) => row.month,
       sortable: true,
     },
     {
-      name: "Phone",
-      selector: (row) => row.phone,
+      name: "Year",
+      selector: (row) => row.year,
       sortable: true,
     },
     {
-      name: "Address",
-      selector: (row) => row.address,
+      name: "Amount",
+      selector: (row) => row.amount,
       sortable: true,
     },
     {
-      name: "Added",
-      selector: (row) => row.addedOn,
-      sortable: true,
-    },
-    {
-      name: "Active",
-      selector: (row) => row.payment.month,
+      name: "Payment Mode",
+      selector: (row) => row.type,
       sortable: true,
     },
   ];
 
+  
+
   return (
-    <div>
-      <DataTable
-        columns={columns}
-        data={data}
-        pagination
-        
-      />
-    </div>
-  );
+    <DataTable columns={columns} data={data} pagination  />
+  )
 };
-export default SubHome;
+
+export default GetAllPayment;

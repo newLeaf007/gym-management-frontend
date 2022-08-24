@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
 const GetAllPayment = () => {
   const [data, setData] = useState([]);
 
   //functions to get all the member
   const getAllMember = () => {
-    axios.get(`http://localhost:8080/payment`).then(
+    axios.get(`http://localhost:8080/member/payment/all`).then(
       (response) => {
         console.log(response.data);
         setData(response.data);
@@ -26,6 +27,11 @@ const GetAllPayment = () => {
     {
       name: "Id",
       selector: (row) => row.id,
+      sortable: true,
+    },
+    {
+      name: "Name",
+      selector: (row) => row.name,
       sortable: true,
     },
     {
@@ -50,11 +56,22 @@ const GetAllPayment = () => {
     },
   ];
 
-  
-
   return (
-    <DataTable columns={columns} data={data} pagination  />
-  )
+    <div>
+      <DataTableExtensions
+        columns={columns}
+        data={data}
+        print={false}
+        export={false}
+      >
+      <DataTable
+        //columns={columns}
+        //data={data}
+        pagination
+      />
+      </DataTableExtensions>
+    </div>
+  );
 };
 
 export default GetAllPayment;

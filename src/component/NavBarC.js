@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const NavbarC = () => {
   return (
     <div>
-      <ListGroup>
-        <Link className="list-group-item list-group-item-action" tag="a" to="/register">Register memeber</Link>
+      <ListGroup className="text-center">
+        <Link className="list-group-item list-group-item-action" tag="a" to="/register" >Register memeber</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/payment">Payment</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/payment-all">Payment made in as month</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/dashboard">Dashboard</Link>

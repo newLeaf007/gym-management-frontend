@@ -1,10 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {Card,CardImg,CardBody,CardTitle,CardSubtitle,Button,CardGroup,CardText} from "reactstrap"
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  CardGroup,
+  CardText,
+  Table,
+} from "reactstrap";
 
 const Dashbaord = () => {
   const [dashbaord, setDashBaord] = useState({});
-  const [member, setMember] = useState({});
+  const [member, setMember] = useState([]);
   const [month, setMonth] = useState({});
 
   //function to api call dashboard
@@ -36,20 +46,53 @@ const Dashbaord = () => {
   useEffect(() => {
     getDashBoard();
   }, []);
-const people = member.map((element,index)=>{
+
+  const people = member.map((element,index)=>{
     return(
-        <p key={index+1}>{element.name}={element.amount}</p>
+        <tr key={index}>
+            <td>{element.name}</td>
+            <td>{element.amount}</td>
+        </tr>
     )
-})
+  })
 
-
-  
   return (
-    <div>
-        {people}
-        <p>Total Member = {dashbaord.totalMmember}</p>
-        <p>Total Active Member ={dashbaord.activeTotalMember}</p>
-        <p>Total Payment ={dashbaord.totalPayment}</p>
+    <div className="m-2">
+      <Card className="m-2">
+        <CardBody>
+          <Table dark>
+            <tbody>
+              <tr>
+                <td>Total Payment</td>
+                <td>{dashbaord.totalMmember}</td>
+              </tr>
+              <tr>
+                <td>Total Active Member</td>
+                <td>{dashbaord.activeTotalMember}</td>
+              </tr>
+
+              <tr>
+                <td>Total Paymemnt</td>
+                <td>{dashbaord.totalPayment}</td>
+              </tr>
+            </tbody>
+          </Table>
+        </CardBody>
+      </Card>
+
+      <Card className="m-2">
+        <CardBody>
+            <Table dark>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>Amount</td>
+                    </tr>
+                   {people} 
+                </tbody>
+            </Table>
+        </CardBody>
+      </Card>
     </div>
   );
 };

@@ -51,13 +51,13 @@ const Dashbaord = () => {
     return(
         <tr key={index}>
             <td>{element.name}</td>
-            <td>{element.amount}</td>
+            <td>&#8377; {element.amount}</td>
         </tr>
     )
   })
 
   return (
-    <div className="m-2">
+    <div>
       <Card className="m-2">
         <CardBody>
           <Table dark>
@@ -73,7 +73,7 @@ const Dashbaord = () => {
 
               <tr>
                 <td>Total Paymemnt</td>
-                <td>{dashbaord.totalPayment}</td>
+                <td>&#8377; {dashbaord.totalPayment} </td>
               </tr>
             </tbody>
           </Table>

@@ -2,7 +2,9 @@ import { Alert } from "reactstrap";
 const Header = () => {
   return(
 
-  <Alert color="primary" className="text-center">Fitness Sqaure</Alert>
+  <div className="container-fluid m-0 p-0 text-center text-white bg-black">
+    <h1>Fitness Square</h1>
+  </div>
   );
 };
 

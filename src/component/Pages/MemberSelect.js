@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {  Input } from "reactstrap";
+import {  Input,Label } from "reactstrap";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Payment from "./Payment";
 
@@ -36,6 +36,8 @@ const MemberSelect = () => {
       }
     )
       return(
+        <div className="m-2">
+          <Label for="Member" >Member</Label>
         <Input type="select" onChange={e=>
          // console.log(e.target.value);
           setMid(e.target.value)
@@ -43,6 +45,7 @@ const MemberSelect = () => {
           <option value="">--select the member---</option>
           {member}
         </Input>
+        </div>
       )
 
   }

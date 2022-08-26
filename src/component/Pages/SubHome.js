@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DataTable from "react-data-table-component";
-import { Table } from "reactstrap";
-import Payment from "./Payment";
+import DataTable  from "react-data-table-component";
+import React from "react";
+
+
 
 const SubHome = () => {
   const [data, setData] = useState([]);
@@ -58,6 +59,7 @@ const SubHome = () => {
       sortable: true,
     },
   ];
+
 
   return (
     <div>

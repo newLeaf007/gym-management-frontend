@@ -1,21 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
 import {
   Card,
-  CardImg,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  Button,
-  CardGroup,
-  CardText,
   Table,
+  Row,
+  Col,
 } from "reactstrap";
 
 const Dashbaord = () => {
   const [dashbaord, setDashBaord] = useState({});
   const [member, setMember] = useState([]);
-  const [month, setMonth] = useState({});
+  const [month, setMonth] = useState([]);
 
   //function to api call dashboard
   const getDashBoard = () => {
@@ -40,25 +39,56 @@ const Dashbaord = () => {
             console.log(error);
           }
         )
-      );
+      )
+      .then(
+        axios.get(`http://localhost:8080/monthwithamount`).then(
+           (response)=>{
+            console.log(response.data);
+            setMonth(response.data);
+           } ,
+           (error)=>{
+            console.log(error);
+           }
+        )
+      )
   };
 
   useEffect(() => {
     getDashBoard();
   }, []);
 
-  const people = member.map((element,index)=>{
-    return(
-        <tr key={index}>
-            <td>{element.name}</td>
-            <td>&#8377; {element.amount}</td>
-        </tr>
-    )
-  })
 
+  const rows = [
+    {
+      name: "Name",
+      selector: (column) => column.name,
+      sortable: true,
+    },
+    {
+      name: "Amount",
+      selector: (column) => column.amount,
+      sortable: true,
+    },
+  ];
+
+  const comlums = [
+    {
+      name: "Month",
+      selector: (column) => column.month,
+      sortable: true,
+    },
+    {
+      name: "Amount",
+      selector: (column) => column.total,
+      sortable: true,
+    },
+  ];
   return (
     <div>
-      <Card className="m-2">
+      <Card>
+        <CardTitle tag="h3" className="text-center bg-success text-white">
+          Total
+        </CardTitle>
         <CardBody>
           <Table dark>
             <tbody>
@@ -79,20 +109,50 @@ const Dashbaord = () => {
           </Table>
         </CardBody>
       </Card>
-
-      <Card className="m-2">
-        <CardBody>
-            <Table dark>
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>Amount</td>
-                    </tr>
-                   {people} 
-                </tbody>
-            </Table>
-        </CardBody>
-      </Card>
+      <Row>
+        <Col>
+          <Card>
+            <CardTitle tag="h3" className="text-center bg-success text-white">
+              Memeber Total Amount
+            </CardTitle>
+            <CardBody>
+              <DataTableExtensions
+                columns={rows}
+                data={member}
+                print={false}
+                export={false}
+              >
+                <DataTable
+                  //columns={columns}
+                  //data={data}
+                  pagination
+                />
+              </DataTableExtensions>
+            </CardBody>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <CardTitle tag="h3" className="text-center bg-success text-white">
+              Month Total Amount
+            </CardTitle>
+            <CardBody>
+              <DataTableExtensions
+                columns={comlums}
+                data={month}
+                print={false}
+                export={false}
+              >
+                <DataTable
+                  //columns={columns}
+                  //data={data}
+                  pagination
+                />
+              </DataTableExtensions>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 };

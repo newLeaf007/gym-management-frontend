@@ -9,10 +9,7 @@ import {
   Label,
   Input,
   Button,
-  Toast,
-  ToastHeader,
-  ToastBody,
-  Container,
+  Container
 } from "reactstrap";
 const Register = () => {
   const sucessnotify = () => toast("Created successfully !!");
@@ -42,7 +39,7 @@ const Register = () => {
     );
   };
 
-  
+
 
 
   return (

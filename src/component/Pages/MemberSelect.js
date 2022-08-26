@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {  Input,Label } from "reactstrap";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Payment from "./Payment";
 
 const MemberSelect = () => {

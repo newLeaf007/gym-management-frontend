@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
+import base_url from "../api/bootapi";
 import {
   Card,
   CardBody,
@@ -19,7 +20,7 @@ const Dashbaord = () => {
   //function to api call dashboard
   const getDashBoard = () => {
     axios
-      .get(`http://localhost:8080/dashboard`)
+      .get(`${base_url}/dashboard`)
       .then(
         (response) => {
           console.log(response.data);
@@ -30,7 +31,7 @@ const Dashbaord = () => {
         }
       )
       .then(
-        axios.get(`http://localhost:8080/memberwithamount`).then(
+        axios.get(`${base_url}/memberwithamount`).then(
           (response) => {
             console.log(response.data);
             setMember(response.data);
@@ -41,7 +42,7 @@ const Dashbaord = () => {
         )
       )
       .then(
-        axios.get(`http://localhost:8080/monthwithamount`).then(
+        axios.get(`${base_url}/monthwithamount`).then(
            (response)=>{
             console.log(response.data);
             setMonth(response.data);

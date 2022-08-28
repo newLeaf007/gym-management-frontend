@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {  Input,Label } from "reactstrap";
 import Payment from "./Payment";
+import base_url from "../api/bootapi";
 
 const MemberSelect = () => {
   
@@ -10,7 +11,7 @@ const MemberSelect = () => {
   //function to get the details member with id
   const getMemberWithId = () => {
 
-    axios.get(`http://localhost:8080/member/memberWithIds`).then(
+    axios.get(`${base_url}/member/memberWithIds`).then(
       (response) => {
         console.log(response.data);
         setData(response.data);

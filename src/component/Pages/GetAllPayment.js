@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
+import base_url from "../api/bootapi";
 const GetAllPayment = () => {
   const [data, setData] = useState([]);
 
   //functions to get all the member
   const getAllMember = () => {
-    axios.get(`http://localhost:8080/member/payment/all`).then(
+    axios.get(`${base_url}/member/payment/all`).then(
       (response) => {
         console.log(response.data);
         setData(response.data);

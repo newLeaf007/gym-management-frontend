@@ -6,7 +6,7 @@ const NavbarC = () => {
       <ListGroup className="text-center">
         <Link className="list-group-item list-group-item-action" tag="a" to="/register" >Register memeber</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/payment">Payment</Link>
-        <Link className="list-group-item list-group-item-action" tag="a" to="/payment-all">Payment</Link>
+        <Link className="list-group-item list-group-item-action" tag="a" to="/payment-all">Payment Details</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/dashboard">Dashboard</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/">Member List table</Link>
         <Link className="list-group-item list-group-item-action" tag="a" to="/excerise/bodyPart">List of body part</Link>

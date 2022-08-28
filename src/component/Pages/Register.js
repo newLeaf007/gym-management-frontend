@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import base_url from "../api/bootapi";
 import {
   Form,
   Row,
@@ -28,7 +29,7 @@ const Register = () => {
 
   //function for two ways binding
   const postDataServer = (member) => {
-    axios.post(`http://localhost:8080/member`, member).then(
+    axios.post(`${base_url}/member`, member).then(
       (response) => {
         console.log(response);
         sucessnotify();

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DataTable  from "react-data-table-component";
 import React from "react";
-
+import base_url from "../api/bootapi";
 
 
 const SubHome = () => {
@@ -10,7 +10,7 @@ const SubHome = () => {
 
   //functions to get all the member
   const getAllMember = () => {
-    axios.get(`http://localhost:8080/member`).then(
+    axios.get(`${base_url}/member`).then(
       (response) => {
         console.log(response.data);
         setData(response.data);

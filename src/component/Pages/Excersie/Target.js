@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form,FormGroup,Input} from "reactstrap";
 import TargetCards from "./TargetCards";
+import base_url from "../../api/bootapi";
 const Target = () => {
   
   const [name,setName] =useState([]);
@@ -10,7 +11,7 @@ const Target = () => {
 
   //fetch the distict list of name
   const getDistinct=()=>{
-    axios.get(`http://localhost:8080/excerise/target`).then(
+    axios.get(`${base_url}/excerise/target`).then(
         (response)=>{
             console.log(response.data);
             setName(response.data);

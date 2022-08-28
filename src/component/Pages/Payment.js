@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import base_url from "../api/bootapi";
 import {
   Form,
   Row,
@@ -25,7 +26,7 @@ const Payment = (props) => {
 
   //function for the api call
   const postDataServer = (payment, id) => {
-    axios.post(`http://localhost:8080/payment/member/${id}`, payment).then(
+    axios.post(`${base_url}/payment/member/${id}`, payment).then(
       (response) => {
         console.log(response.data);
         sucessnotify();

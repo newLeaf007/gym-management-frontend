@@ -18,10 +18,7 @@ const Home =()=>{
             <Router>
             <Header/>
             <Row>
-                <Col md="2">
-                    <NavbarC/>
-                </Col>
-                <Col md="10">
+                <Col md="12">
                    <Routes>
                         <Route path="/" element={<SubHome/>}/>
                         <Route path="/register" element={<Register/>}/>

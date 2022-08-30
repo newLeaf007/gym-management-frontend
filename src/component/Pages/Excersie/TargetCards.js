@@ -13,6 +13,8 @@ const TargetCards = (props) => {
     axios({
       method: "GET",
       url: base_url +"/excerise/target/" + part,
+      
+
      
     }).then(
       (response) => {

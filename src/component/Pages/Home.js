@@ -11,15 +11,25 @@ import BodyPart from "./Excersie/BodyPart";
 import Excersie from "./Excersie/Excerise";
 import Target from "./Excersie/Target";
 import Equipement from "./Excersie/Equipement";
-
+import Pic1 from   "./images/pic1.jpg";
+import Login from "./Login";
 const Home =()=>{
     return(
         <div>
             <Router>
             <Header/>
             <Row>
-                <Col md="12">
+                <Col md="3">
+                    <img
+                        alt="side"
+                        src={Pic1}
+                        width="100%"
+                        height="400px"
+                    ></img>
+                </Col>
+                <Col md="9">
                    <Routes>
+                        <Route path="/login" element={<Login/>}/>
                         <Route path="/" element={<SubHome/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/payment" element={<MemberSelect/>}/>

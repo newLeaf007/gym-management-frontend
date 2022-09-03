@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {  Input,Label } from "reactstrap";
 import Payment from "./Payment";
 import base_url from "../api/bootapi";
+import { getToken } from "../../auth/Auth";
 
 const MemberSelect = () => {
   
@@ -11,7 +12,14 @@ const MemberSelect = () => {
   //function to get the details member with id
   const getMemberWithId = () => {
 
-    axios.get(`${base_url}/member/memberWithIds`).then(
+    axios({
+      method:"GET",
+      url: `${base_url}/member/memberWithIds`,
+      headers:{
+        "Authorization" : `Bearer ${getToken()}`
+      }
+    })
+    .then(
       (response) => {
         console.log(response.data);
         setData(response.data);

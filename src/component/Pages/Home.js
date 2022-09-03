@@ -1,5 +1,3 @@
-import Header from "../Header";
-import NavbarC from "../NavBarC";
 import {Row,Col} from "reactstrap";
 import SubHome from "./SubHome";
 import Register from "./Register";
@@ -13,11 +11,12 @@ import Target from "./Excersie/Target";
 import Equipement from "./Excersie/Equipement";
 import Pic1 from   "./images/pic1.jpg";
 import Login from "./Login";
+import NavNew from "../NavNew";
 const Home =()=>{
     return(
         <div>
             <Router>
-            <Header/>
+            <NavNew/>
             <Row>
                 <Col md="3">
                     <img

@@ -3,14 +3,8 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
 import base_url from "../api/bootapi";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  Table,
-  Row,
-  Col,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, Table, Row, Col } from "reactstrap";
+import { getToken } from "../../auth/Auth";
 
 const Dashbaord = () => {
   const [dashbaord, setDashBaord] = useState({});
@@ -19,8 +13,13 @@ const Dashbaord = () => {
 
   //function to api call dashboard
   const getDashBoard = () => {
-    axios
-      .get(`${base_url}/dashboard`)
+    axios({
+      method: "GET",
+      url: `${base_url}/dashboard`,
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    })
       .then(
         (response) => {
           console.log(response.data);
@@ -30,8 +29,15 @@ const Dashbaord = () => {
           console.log(error);
         }
       )
+
       .then(
-        axios.get(`${base_url}/memberwithamount`).then(
+        axios({
+          method: "GET",
+          url: `${base_url}/memberwithamount`,
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        }).then(
           (response) => {
             console.log(response.data);
             setMember(response.data);
@@ -42,22 +48,27 @@ const Dashbaord = () => {
         )
       )
       .then(
-        axios.get(`${base_url}/monthwithamount`).then(
-           (response)=>{
+        axios({
+          method: "GET",
+          url: `${base_url}/monthwithamount`,
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        }).then(
+          (response) => {
             console.log(response.data);
             setMonth(response.data);
-           } ,
-           (error)=>{
+          },
+          (error) => {
             console.log(error);
-           }
+          }
         )
-      )
+      );
   };
 
   useEffect(() => {
     getDashBoard();
   }, []);
-
 
   const rows = [
     {

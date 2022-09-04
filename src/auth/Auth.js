@@ -41,7 +41,6 @@ export const getCurrentUser = () => {
 //get token 
 export const getToken = () =>{
     if(isLoggedIn()){
-        console.log(JSON.parse(localStorage.getItem("data"))?.token);
         return JSON.parse(localStorage.getItem("data"))?.token;
     }else return undefined;
 }

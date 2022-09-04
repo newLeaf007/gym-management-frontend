@@ -15,6 +15,7 @@ import {
 import { getToken } from "../../auth/Auth";
 const Register = () => {
   const sucessnotify = () => toast("Created successfully !!");
+  
   useEffect(() => {
     document.title = "Register Member";
   });
@@ -39,7 +40,8 @@ const Register = () => {
         sucessnotify();
       },
       (error) => {
-        console.log(error);
+        console.log(error.response.data.message);
+        toast(error.response.data.message);
       }
     );
   };

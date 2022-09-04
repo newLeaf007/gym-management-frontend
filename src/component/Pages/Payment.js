@@ -12,6 +12,7 @@ import {
   Container,
 } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
+import { getToken } from "../../auth/Auth";
 const Payment = (props) => {
   const sucessnotify = () => toast("Created successfully !!");
 
@@ -25,8 +26,11 @@ const Payment = (props) => {
   };
 
   //function for the api call
+  const headers ={
+    "Authorization" : `Bearer ${getToken()}`
+  }
   const postDataServer = (payment, id) => {
-    axios.post(`${base_url}/payment/member/${id}`, payment).then(
+    axios.post(`${base_url}/payment/member/${id}`, payment,{headers}).then(
       (response) => {
         console.log(response.data);
         sucessnotify();

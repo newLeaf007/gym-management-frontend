@@ -12,8 +12,10 @@ import {
   Button,
   Container
 } from "reactstrap";
+import { getToken } from "../../auth/Auth";
 const Register = () => {
   const sucessnotify = () => toast("Created successfully !!");
+  
   useEffect(() => {
     document.title = "Register Member";
   });
@@ -27,15 +29,19 @@ const Register = () => {
     e.preventDefault();
   };
 
+  const headers ={
+    "Authorization" : `Bearer ${getToken()}`
+  }
   //function for two ways binding
   const postDataServer = (member) => {
-    axios.post(`${base_url}/member`, member).then(
+    axios.post(`${base_url}/member`, member,{headers}).then(
       (response) => {
         console.log(response);
         sucessnotify();
       },
       (error) => {
-        console.log(error);
+        console.log(error.response.data.message);
+        toast(error.response.data.message);
       }
     );
   };

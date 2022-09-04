@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ExceriseCard from "./ExceriseCard";
 import base_url from "../../api/bootapi";
+import { getToken } from "../../../auth/Auth";
 
 const EquipmentCards = (props) => {
   console.log(props.data.part);
@@ -13,7 +14,9 @@ const EquipmentCards = (props) => {
     axios({
       method: "GET",
       url:  base_url+"/excerise/equipement/" + part,
-     
+     headers:{
+      "Authorization" :`Bearer ${getToken()}`
+     }
     }).then(
       (response) => {
         setExc(response.data);

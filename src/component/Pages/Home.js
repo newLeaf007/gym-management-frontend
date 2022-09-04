@@ -1,5 +1,3 @@
-import Header from "../Header";
-import NavbarC from "../NavBarC";
 import {Row,Col} from "reactstrap";
 import SubHome from "./SubHome";
 import Register from "./Register";
@@ -11,18 +9,26 @@ import BodyPart from "./Excersie/BodyPart";
 import Excersie from "./Excersie/Excerise";
 import Target from "./Excersie/Target";
 import Equipement from "./Excersie/Equipement";
-
+import Pic1 from   "./images/pic1.jpg";
+import Login from "./Login";
+import NavNew from "../NavNew";
 const Home =()=>{
     return(
         <div>
             <Router>
-            <Header/>
+            <NavNew/>
             <Row>
-                <Col md="2">
-                    <NavbarC/>
+                <Col md="3">
+                    <img
+                        alt="side"
+                        src={Pic1}
+                        width="100%"
+                        height="400px"
+                    ></img>
                 </Col>
-                <Col md="10">
+                <Col md="9">
                    <Routes>
+                        <Route path="/login" element={<Login/>}/>
                         <Route path="/" element={<SubHome/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/payment" element={<MemberSelect/>}/>
